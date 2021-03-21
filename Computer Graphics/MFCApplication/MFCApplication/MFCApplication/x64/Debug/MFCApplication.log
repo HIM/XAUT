@@ -1,0 +1,9 @@
+﻿  MFCApplicationView.cpp
+F:\Code\Computer Graphics\MFCApplication\MFCApplication\MFCApplication\MFCApplicationView.cpp(286,17): warning C4244: “参数”: 从“double”转换到“int”，可能丢失数据
+F:\Code\Computer Graphics\MFCApplication\MFCApplication\MFCApplication\MFCApplicationView.cpp(286,14): warning C4244: “参数”: 从“double”转换到“int”，可能丢失数据
+F:\Code\Computer Graphics\MFCApplication\MFCApplication\MFCApplication\MFCApplicationView.cpp(297,18): warning C4244: “参数”: 从“double”转换到“int”，可能丢失数据
+F:\Code\Computer Graphics\MFCApplication\MFCApplication\MFCApplication\MFCApplicationView.cpp(297,15): warning C4244: “参数”: 从“double”转换到“int”，可能丢失数据
+  onePoint.cpp
+  PropertiesWnd.cpp
+  正在生成代码...
+  MFCApplication.vcxproj -> F:\Code\Computer Graphics\MFCApplication\MFCApplication\x64\Debug\MFCApplication.exe

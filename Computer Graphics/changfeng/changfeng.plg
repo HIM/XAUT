@@ -1,0 +1,66 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: changfeng - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "C:\Users\dell\AppData\Local\Temp\RSPD92F.tmp" with contents
+[
+/nologo /MDd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_AFXDLL" /D "_MBCS" /Fp"Debug/changfeng.pch" /Yu"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"F:\Code\Computer Graphics\changfeng\changfengView.cpp"
+]
+Creating command line "cl.exe @C:\Users\dell\AppData\Local\Temp\RSPD92F.tmp" 
+Creating temporary file "C:\Users\dell\AppData\Local\Temp\RSPD930.tmp" with contents
+[
+/nologo /subsystem:windows /incremental:yes /pdb:"Debug/changfeng.pdb" /debug /machine:I386 /out:"Debug/changfeng.exe" /pdbtype:sept 
+".\Debug\changfeng.obj"
+".\Debug\changfengDoc.obj"
+".\Debug\changfengView.obj"
+".\Debug\ChildFrm.obj"
+".\Debug\circleBreDlg.obj"
+".\Debug\circleMidDlg.obj"
+".\Debug\LineBresenhamDlg.obj"
+".\Debug\LineDDADlg.obj"
+".\Debug\LineMidDlg.obj"
+".\Debug\LineZhuodianDlg.obj"
+".\Debug\MainFrm.obj"
+".\Debug\StdAfx.obj"
+".\Debug\changfeng.res"
+]
+Creating command line "link.exe @C:\Users\dell\AppData\Local\Temp\RSPD930.tmp"
+<h3>Output Window</h3>
+Compiling...
+changfengView.cpp
+F:\Code\Computer Graphics\changfeng\changfengView.cpp(159) : warning C4244: 'argument' : conversion from 'double' to 'int', possible loss of data
+F:\Code\Computer Graphics\changfeng\changfengView.cpp(159) : warning C4244: 'argument' : conversion from 'double' to 'int', possible loss of data
+F:\Code\Computer Graphics\changfeng\changfengView.cpp(160) : warning C4244: 'argument' : conversion from 'double' to 'int', possible loss of data
+F:\Code\Computer Graphics\changfeng\changfengView.cpp(160) : warning C4244: 'argument' : conversion from 'double' to 'int', possible loss of data
+F:\Code\Computer Graphics\changfeng\changfengView.cpp(161) : warning C4244: 'argument' : conversion from 'double' to 'int', possible loss of data
+F:\Code\Computer Graphics\changfeng\changfengView.cpp(161) : warning C4244: 'argument' : conversion from 'double' to 'int', possible loss of data
+F:\Code\Computer Graphics\changfeng\changfengView.cpp(162) : warning C4244: 'argument' : conversion from 'double' to 'int', possible loss of data
+F:\Code\Computer Graphics\changfeng\changfengView.cpp(162) : warning C4244: 'argument' : conversion from 'double' to 'int', possible loss of data
+F:\Code\Computer Graphics\changfeng\changfengView.cpp(163) : warning C4244: 'argument' : conversion from 'double' to 'int', possible loss of data
+F:\Code\Computer Graphics\changfeng\changfengView.cpp(163) : warning C4244: 'argument' : conversion from 'double' to 'int', possible loss of data
+F:\Code\Computer Graphics\changfeng\changfengView.cpp(164) : warning C4244: 'argument' : conversion from 'double' to 'int', possible loss of data
+F:\Code\Computer Graphics\changfeng\changfengView.cpp(164) : warning C4244: 'argument' : conversion from 'double' to 'int', possible loss of data
+F:\Code\Computer Graphics\changfeng\changfengView.cpp(165) : warning C4244: 'argument' : conversion from 'double' to 'int', possible loss of data
+F:\Code\Computer Graphics\changfeng\changfengView.cpp(165) : warning C4244: 'argument' : conversion from 'double' to 'int', possible loss of data
+F:\Code\Computer Graphics\changfeng\changfengView.cpp(166) : warning C4244: 'argument' : conversion from 'double' to 'int', possible loss of data
+F:\Code\Computer Graphics\changfeng\changfengView.cpp(166) : warning C4244: 'argument' : conversion from 'double' to 'int', possible loss of data
+F:\Code\Computer Graphics\changfeng\changfengView.cpp(193) : warning C4244: 'argument' : conversion from 'double' to 'int', possible loss of data
+F:\Code\Computer Graphics\changfeng\changfengView.cpp(193) : warning C4244: 'argument' : conversion from 'double' to 'int', possible loss of data
+F:\Code\Computer Graphics\changfeng\changfengView.cpp(194) : warning C4244: 'argument' : conversion from 'double' to 'int', possible loss of data
+F:\Code\Computer Graphics\changfeng\changfengView.cpp(196) : warning C4244: 'argument' : conversion from 'double' to 'int', possible loss of data
+F:\Code\Computer Graphics\changfeng\changfengView.cpp(203) : warning C4244: 'argument' : conversion from 'double' to 'int', possible loss of data
+F:\Code\Computer Graphics\changfeng\changfengView.cpp(203) : warning C4244: 'argument' : conversion from 'double' to 'int', possible loss of data
+Linking...
+
+
+
+<h3>Results</h3>
+changfeng.exe - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>
