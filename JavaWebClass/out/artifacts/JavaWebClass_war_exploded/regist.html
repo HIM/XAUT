@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>regist</title>
+
+    <!--<link href="css/javaweb.css" rel="stylesheet">-->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery-2.1.0.min.js"></script>
+    <script src="js/regist_Jquery.js"></script>
+</head>
+<body>
+    <div class="container" style="width: 400px;">
+        <center><h1>注册</h1></center>
+        <form id="iform" action="${pageContext.request.contextPath}/registSuc.jsp" method="post">
+            <div class="form-group">
+                <label>用户类型</label>
+                <input type="radio" name="usertype" value="学生" checked="checked"/>学生
+                <input type="radio" name="usertype" value="教师"/>教师
+                <input type="radio" name="usertype" value="管理员"/>管理员
+            </div>
+            <div class="form-group">
+                <label>用户名</label>
+                <input type="text" name="username" class="form-control" id="username" placeholder="请输入用户名"/>
+            </div>
+            <div class="form-group">
+                <label>密码</label>
+                <input type="text" name="password" class="form-control" id="password" placeholder="请输入密码"/>
+            </div>
+            <div class="form-group">
+                <label>确认密码</label>
+                <input type="text" name="conpassword" class="form-control" id="conpassword" placeholder="确认密码请和上一行密码保持相同"/>
+            </div>
+            <div class="form-group">
+                <label>真实姓名</label>
+                <input type="text" name="name" class="form-control" id="name" placeholder="请输入真实姓名"/>
+            </div>
+            <div class="form-group">
+                <label>手机号码</label>
+                <input type="text" name="phone" class="form-control" id="phone" placeholder="请输入手机号码"/>
+            </div>
+            <div class="form-group">
+                <label>邮箱</label>
+                <input type="text" name="email" class="form-control" id="email" placeholder="请输入邮箱"/>
+            </div>
+            <div class="form-group">
+                <label>所在单位</label>
+                <input type="text" name="department" class="form-control" id="department" placeholder="请输入所在单位名称"/>
+            </div>
+            <div class="form-group">
+                <label>验证码</label>
+                <input type="text" name="check" class="form-inline" id="check" placeholder="请输入验证码"/>
+                <img src="img/timg.jpg" style="width: 100px;"/>
+            </div>
+            <div class="form-group" style="text-align: center">
+                <input class="btn btn-default" type="reset" value="重置" />
+                <input class="btn btn btn-primary" type="button" id="isubmit" value="登录">
+            </div>
+        </form>
+    </div>
+
+    <!--<div id="box">-->
+        <!--<div id="head">-->
+            <!--<div id="head_left">用户注册</div>-->
+            <!--<div id="head_right">2020/9/14</div>-->
+        <!--</div>-->
+        <!--<div id="context">-->
+            <!--<form id="iform" action="./login.html" method="POST">-->
+                <!--<table border="0" class="form_table">-->
+                    <!--<tr>-->
+                        <!--<td>用户类型：</td>-->
+                        <!--<td>-->
+                            <!--<input type="radio" name="usertype" value="学生" id="usertype1" checked="checked"/>学生-->
+                            <!--<input type="radio" name="usertype" value="教师" id="usertype2" checked="checked"/>教师-->
+                            <!--<input type="radio" name="usertype" value="教师" id="usertype3" checked="ja"/>管理员-->
+                        <!--</td>-->
+                    <!--</tr>-->
+                    <!--<tr>-->
+                        <!--<td>用&nbsp;户&nbsp;名：</td>-->
+                        <!--<td>-->
+                            <!--<input type="text" name="username" id="username"/>-->
+                        <!--</td>-->
+                        <!--<td id="message_u" class="error"></td>-->
+                    <!--</tr>-->
+                    <!--<tr>-->
+                        <!--<td>密&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;码：</td>-->
+                        <!--<td>-->
+                            <!--<input type="text" name="password" id="password"/>-->
+                        <!--</td>-->
+                        <!--<td id="message_p" class="error"></td>-->
+                    <!--</tr>-->
+                    <!--<tr>-->
+                        <!--<td>确认密码：</td>-->
+                        <!--<td>-->
+                            <!--<input type="text" name="conpassword" id="conpassword"/>-->
+                        <!--</td>-->
+                        <!--<td id="message_conp" class="error"></td>-->
+                    <!--</tr>-->
+                    <!--<tr>-->
+                        <!--<td>姓&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名：</td>-->
+                        <!--<td>-->
+                            <!--<input type="text" name="name" id="name"/>-->
+                        <!--</td>-->
+                        <!--<td id="message_n" class="error"></td>-->
+                    <!--</tr>-->
+                    <!--<tr>-->
+                        <!--<td>手机号码：</td>-->
+                        <!--<td>-->
+                            <!--<input type="text" name="phone" id="phone"/>-->
+                        <!--</td>-->
+                        <!--<td id="message_phone" class="error"></td>-->
+                    <!--</tr>-->
+                    <!--<tr>-->
+                        <!--<td>邮&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;箱：</td>-->
+                        <!--<td>-->
+                            <!--<input type="text" name="email" id="email"/>-->
+                        <!--</td>-->
+                        <!--<td id="message_e" class="error"></td>-->
+                    <!--</tr>-->
+                    <!--<tr>-->
+                        <!--<td>所在单位：</td>-->
+                        <!--<td>-->
+                            <!--<input type="text" name="department" id="department"/>-->
+                        <!--</td>-->
+                        <!--<td id="message_d" class="error"></td>-->
+                    <!--</tr>-->
+                    <!--<tr>-->
+                        <!--<td>验&nbsp;证&nbsp;码：</td>-->
+                        <!--<td>-->
+                            <!--<input type="text" name="check" id="check"/>-->
+                        <!--</td>-->
+                        <!--<td>-->
+                            <!--<img alt="验证码" src="img/timg.jpg" id="img"/>-->
+                        <!--</td>-->
+                        <!--<td id="message_c" class="error"></td>-->
+                    <!--</tr>-->
+                <!--</table>-->
+                <!--<div id="sub">-->
+                    <!--<input type="reset" value="重置" id="reset"/>-->
+                    <!--<input type="button" value="注册" id="isubmit"/>-->
+                <!--</div>-->
+            <!--</form>-->
+        <!--</div>-->
+        <!--<div id="foot">-->
+            <!--<div id="foot_word">Liugm@xaut.edu.cn</div>-->
+        <!--</div>-->
+    <!--</div>-->
+    
+</body>
+</html>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/DataSource_JDBCTemplate/DataSource_JDBCTemplate.iml" filepath="$PROJECT_DIR$/DataSource_JDBCTemplate/DataSource_JDBCTemplate.iml" />
+      <module fileurl="file://$PROJECT_DIR$/JDBC/JDBC.iml" filepath="$PROJECT_DIR$/JDBC/JDBC.iml" />
+      <module fileurl="file://$PROJECT_DIR$/JQuery/JQuery.iml" filepath="$PROJECT_DIR$/JQuery/JQuery.iml" />
+      <module fileurl="file://$PROJECT_DIR$/JavaSchoolTest.iml" filepath="$PROJECT_DIR$/JavaSchoolTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/JavaWeb_Case/JavaWeb_Case.iml" filepath="$PROJECT_DIR$/JavaWeb_Case/JavaWeb_Case.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../../MavenTest/MavenTest.iml" filepath="$PROJECT_DIR$/../../MavenTest/MavenTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Servlet_01/Servlet_01.iml" filepath="$PROJECT_DIR$/Servlet_01/Servlet_01.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/src.iml" filepath="$PROJECT_DIR$/.idea/src.iml" />
+      <module fileurl="file://$PROJECT_DIR$/tomcat_webtest/tomcat_webtest.iml" filepath="$PROJECT_DIR$/tomcat_webtest/tomcat_webtest.iml" />
+    </modules>
+  </component>
+</project>

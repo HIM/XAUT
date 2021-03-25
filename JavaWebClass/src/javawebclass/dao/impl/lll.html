@@ -1,0 +1,1655 @@
+<html>
+
+<script>
+
+
+window.onload = function() {
+
+            //获取所有+按钮
+            var increment = document.getElementsByClassName("increase");
+
+            for (var i = 0; i < increment.length; i++) {
+                //为a标签添加index属性，用于记录下标
+                increment[i].index = i;
+
+                //点击+数量增加的功能函数
+                increment[i].onclick = function() {
+                    var flag = this.index;
+                    //获取当前a标签对应的数量框
+                    var q = document.getElementsByClassName("quantity")[flag];
+					
+					var p = document.getElementsByClassName("num")[flag];
+					
+					if(parseInt(q.value) = p.innerHTML){
+						alert("1111")；
+					}
+					
+                    if(parseInt(q.value) < p.innerHTML){
+                        var newvalue = parseInt(q.value) + 1;
+						
+						
+                        //用q.value=parseInt(q.value)+1
+                        //会导致数值只在点击的一瞬间发生变化，然后又跳回1
+                        q.setAttribute('value', newvalue);
+                        //更新此商品对应的‘小计’
+                        changeSum(flag, newvalue);
+                    }
+					
+                }
+            }
+
+            //获取所有-按钮
+            var decrement = document.getElementsByClassName('decrease');
+
+            //点击-数量减少的功能函数
+            for (var j = 0; j < decrement.length; j++) {
+                decrement[j].index = j;
+
+                decrement[j].onclick = function() {
+                    var flag = this.index;
+                    //获取当前a标签对应的那个数量框
+                    var q = document.getElementsByClassName("quantity")[flag];
+
+                    if (parseInt(q.value) > 0) {
+                        var newvalue = parseInt(q.value) - 1;
+
+                        q.setAttribute('value', newvalue);
+
+                        changeSum(flag, newvalue);
+                    }
+                }
+            }
+
+
+            //结算功能
+            var calculate = document.getElementById('calculate');
+
+            calculate.onclick = function() {
+
+                var radios = document.getElementsByName('p-radio');
+
+                var sumPrice = 0;
+
+                var p = document.getElementsByClassName('onlySum');
+
+                for (var m = 0; m < p.length; m++) {
+                    sumPrice = sumPrice + parseInt(p[m].innerHTML);
+                }
+
+                document.getElementsByClassName("sum-price")[0].innerHTML = sumPrice;
+            }
+
+
+        }
+
+
+        //更新每个商品的‘小计’
+        function changeSum(flag, num) {
+            //获取对应单价所在的标签
+            var temp = document.getElementsByClassName("onlyPrice")[flag];
+			
+			
+            //获取单价
+            var unitPrice = temp.innerHTML;
+			
+            //计算新的小计价格
+            var newPrice = parseInt(unitPrice) * num;
+
+            var sum = document.getElementsByClassName("onlySum")[flag];
+            sum.innerHTML = newPrice;
+        }
+
+</script>
+
+<body>
+<table class="table table-striped">
+                        <tbody><tr>
+                            <th>图片</th>
+                            <th>药品名称</th>
+                            <th>药品编号</th>
+                            <th>厂家名称</th>
+                            <th>库存数量（单位：件）</th>
+                            <th>生产日期</th>
+                            <th>售价</th>
+                            <th>已购数量</th>
+                            <th>小计</th>
+                        </tr>
+                        
+
+                        <tr id="100">
+                            <td><img src="./images/100.jpg" style="width: 40px;"></td>
+                            <td>双黄连口服液</td>
+                            <td><input name="100_id" value="100"></td>
+                            <td>东莞市亚洲制药有限公司</td>
+                            <td class="num">521</td>
+                            <td>2021-01-01</td>
+                            <td class="onlyPrice">28.0</td>
+                            <td class="p-quantity">
+                                <input type="button" class="decrease" value="-">
+                                <input name="100_num" type="text" class="quantity" value="0">
+                                <input type="button" class="increase" value="+">
+                            </td>
+                            <td><div class="p-sum">￥<span class="onlySum">0</span></div></td>
+                        </tr>
+                        
+
+                        <tr id="100">
+                            <td><img src="./images/100.jpg" style="width: 40px;"></td>
+                            <td>双黄连口服液</td>
+                            <td><input name="100_id" value="100"></td>
+                            <td>东莞市亚洲制药有限公司</td>
+                            <td class="num">46</td>
+                            <td>2021-01-02</td>
+                            <td class="onlyPrice">28.0</td>
+                            <td class="p-quantity">
+                                <input type="button" class="decrease" value="-">
+                                <input name="100_num" type="text" class="quantity" value="0">
+                                <input type="button" class="increase" value="+">
+                            </td>
+                            <td><div class="p-sum">￥<span class="onlySum">0</span></div></td>
+                        </tr>
+                        
+
+                        <tr id="101">
+                            <td><img src="./images/101.jpg" style="width: 40px;"></td>
+                            <td>999感冒灵</td>
+                            <td><input name="101_id" value="101"></td>
+                            <td>东莞市亚洲制药有限公司</td>
+                            <td class="num">557</td>
+                            <td>2021-01-01</td>
+                            <td class="onlyPrice">30.0</td>
+                            <td class="p-quantity">
+                                <input type="button" class="decrease" value="-">
+                                <input name="101_num" type="text" class="quantity" value="0">
+                                <input type="button" class="increase" value="+">
+                            </td>
+                            <td><div class="p-sum">￥<span class="onlySum">0</span></div></td>
+                        </tr>
+                        
+
+                        <tr id="102">
+                            <td><img src="./images/102.jpg" style="width: 40px;"></td>
+                            <td>复方氨酚烷胺片</td>
+                            <td><input name="102_id" value="102"></td>
+                            <td>河南太龙药业股份有限公司</td>
+                            <td class="num">538</td>
+                            <td>2021-01-01</td>
+                            <td class="onlyPrice">40.0</td>
+                            <td class="p-quantity">
+                                <input type="button" class="decrease" value="-">
+                                <input name="102_num" type="text" class="quantity" value="0">
+                                <input type="button" class="increase" value="+">
+                            </td>
+                            <td><div class="p-sum">￥<span class="onlySum">0</span></div></td>
+                        </tr>
+                        
+
+                        <tr id="103">
+                            <td><img src="./images/103.jpg" style="width: 40px;"></td>
+                            <td>连花清瘟胶囊</td>
+                            <td><input name="103_id" value="103"></td>
+                            <td>黑龙江瑞格制药有限公司</td>
+                            <td class="num">523</td>
+                            <td>2021-01-01</td>
+                            <td class="onlyPrice">42.0</td>
+                            <td class="p-quantity">
+                                <input type="button" class="decrease" value="-">
+                                <input name="103_num" type="text" class="quantity" value="0">
+                                <input type="button" class="increase" value="+">
+                            </td>
+                            <td><div class="p-sum">￥<span class="onlySum">0</span></div></td>
+                        </tr>
+                        
+
+                        <tr id="104">
+                            <td><img src="./images/104.jpg" style="width: 40px;"></td>
+                            <td>汇仁肾宝片</td>
+                            <td><input name="104_id" value="104"></td>
+                            <td>中国医药集团有限公司</td>
+                            <td class="num">521</td>
+                            <td>2021-01-01</td>
+                            <td class="onlyPrice">500.0</td>
+                            <td class="p-quantity">
+                                <input type="button" class="decrease" value="-">
+                                <input name="104_num" type="text" class="quantity" value="0">
+                                <input type="button" class="increase" value="+">
+                            </td>
+                            <td><div class="p-sum">￥<span class="onlySum">0</span></div></td>
+                        </tr>
+                        
+
+                        <tr id="105">
+                            <td><img src="./images/105.jpg" style="width: 40px;"></td>
+                            <td>六味地黄丸</td>
+                            <td><input name="105_id" value="105"></td>
+                            <td>南京医药产业有限公司</td>
+                            <td class="num">521</td>
+                            <td>2021-01-01</td>
+                            <td class="onlyPrice">80.0</td>
+                            <td class="p-quantity">
+                                <input type="button" class="decrease" value="-">
+                                <input name="105_num" type="text" class="quantity" value="0">
+                                <input type="button" class="increase" value="+">
+                            </td>
+                            <td><div class="p-sum">￥<span class="onlySum">0</span></div></td>
+                        </tr>
+                        
+
+                        <tr id="106">
+                            <td><img src="./images/106.jpg" style="width: 40px;"></td>
+                            <td>阿莫西林胶囊</td>
+                            <td><input name="106_id" value="106"></td>
+                            <td>太极集团有限公司</td>
+                            <td class="num">521</td>
+                            <td>2021-01-01</td>
+                            <td class="onlyPrice">45.0</td>
+                            <td class="p-quantity">
+                                <input type="button" class="decrease" value="-">
+                                <input name="106_num" type="text" class="quantity" value="0">
+                                <input type="button" class="increase" value="+">
+                            </td>
+                            <td><div class="p-sum">￥<span class="onlySum">0</span></div></td>
+                        </tr>
+                        
+
+                        <tr id="107">
+                            <td><img src="./images/107.jpg" style="width: 40px;"></td>
+                            <td>雷贝拉唑钠肠溶片</td>
+                            <td><input name="107_id" value="107"></td>
+                            <td>深圳中联广深医药集团股份有限公司</td>
+                            <td class="num">521</td>
+                            <td>2021-01-01</td>
+                            <td class="onlyPrice">40.0</td>
+                            <td class="p-quantity">
+                                <input type="button" class="decrease" value="-">
+                                <input name="107_num" type="text" class="quantity" value="0">
+                                <input type="button" class="increase" value="+">
+                            </td>
+                            <td><div class="p-sum">￥<span class="onlySum">0</span></div></td>
+                        </tr>
+                        
+
+                        <tr id="108">
+                            <td><img src="./images/108.jpg" style="width: 40px;"></td>
+                            <td>板蓝根颗粒</td>
+                            <td><input name="108_id" value="108"></td>
+                            <td>太极集团有限公司</td>
+                            <td class="num">521</td>
+                            <td>2021-01-01</td>
+                            <td class="onlyPrice">32.0</td>
+                            <td class="p-quantity">
+                                <input type="button" class="decrease" value="-">
+                                <input name="108_num" type="text" class="quantity" value="0">
+                                <input type="button" class="increase" value="+">
+                            </td>
+                            <td><div class="p-sum">￥<span class="onlySum">0</span></div></td>
+                        </tr>
+                        
+
+                        <tr id="109">
+                            <td><img src="./images/109.jpg" style="width: 40px;"></td>
+                            <td>三九胃泰颗粒</td>
+                            <td><input name="109_id" value="109"></td>
+                            <td>黑龙江瑞格制药有限公司</td>
+                            <td class="num">521</td>
+                            <td>2021-01-01</td>
+                            <td class="onlyPrice">40.0</td>
+                            <td class="p-quantity">
+                                <input type="button" class="decrease" value="-">
+                                <input name="109_num" type="text" class="quantity" value="0">
+                                <input type="button" class="increase" value="+">
+                            </td>
+                            <td><div class="p-sum">￥<span class="onlySum">0</span></div></td>
+                        </tr>
+                        
+
+                        <tr id="110">
+                            <td><img src="./images/110.jpg" style="width: 40px;"></td>
+                            <td>百令胶囊</td>
+                            <td><input name="110_id" value="110"></td>
+                            <td>黑龙江瑞格制药有限公司</td>
+                            <td class="num">521</td>
+                            <td>2021-01-01</td>
+                            <td class="onlyPrice">95.0</td>
+                            <td class="p-quantity">
+                                <input type="button" class="decrease" value="-">
+                                <input name="110_num" type="text" class="quantity" value="0">
+                                <input type="button" class="increase" value="+">
+                            </td>
+                            <td><div class="p-sum">￥<span class="onlySum">0</span></div></td>
+                        </tr>
+                        
+
+                        <tr id="111">
+                            <td><img src="./images/111.jpg" style="width: 40px;"></td>
+                            <td>盐酸氨溴索口服溶液</td>
+                            <td><input name="111_id" value="111"></td>
+                            <td>黑龙江瑞格制药有限公司</td>
+                            <td class="num">521</td>
+                            <td>2021-01-01</td>
+                            <td class="onlyPrice">40.0</td>
+                            <td class="p-quantity">
+                                <input type="button" class="decrease" value="-">
+                                <input name="111_num" type="text" class="quantity" value="0">
+                                <input type="button" class="increase" value="+">
+                            </td>
+                            <td><div class="p-sum">￥<span class="onlySum">0</span></div></td>
+                        </tr>
+                        
+
+                        <tr id="112">
+                            <td><img src="./images/112.jpg" style="width: 40px;"></td>
+                            <td>黄龙止咳颗粒</td>
+                            <td><input name="112_id" value="112"></td>
+                            <td>河南太龙药业股份有限公司</td>
+                            <td class="num">521</td>
+                            <td>2021-01-01</td>
+                            <td class="onlyPrice">82.0</td>
+                            <td class="p-quantity">
+                                <input type="button" class="decrease" value="-">
+                                <input name="112_num" type="text" class="quantity" value="0">
+                                <input type="button" class="increase" value="+">
+                            </td>
+                            <td><div class="p-sum">￥<span class="onlySum">0</span></div></td>
+                        </tr>
+                        
+
+                        <tr id="113">
+                            <td><img src="./images/113.jpg" style="width: 40px;"></td>
+                            <td>胃苏颗粒</td>
+                            <td><input name="113_id" value="113"></td>
+                            <td>河南太龙药业股份有限公司</td>
+                            <td class="num">521</td>
+                            <td>2021-01-01</td>
+                            <td class="onlyPrice">45.0</td>
+                            <td class="p-quantity">
+                                <input type="button" class="decrease" value="-">
+                                <input name="113_num" type="text" class="quantity" value="0">
+                                <input type="button" class="increase" value="+">
+                            </td>
+                            <td><div class="p-sum">￥<span class="onlySum">0</span></div></td>
+                        </tr>
+                        
+
+                        <tr id="114">
+                            <td><img src="./images/114.jpg" style="width: 40px;"></td>
+                            <td>大山楂丸</td>
+                            <td><input name="114_id" value="114"></td>
+                            <td>山东东阿阿胶集团有限责任公司</td>
+                            <td class="num">521</td>
+                            <td>2021-01-01</td>
+                            <td class="onlyPrice">55.0</td>
+                            <td class="p-quantity">
+                                <input type="button" class="decrease" value="-">
+                                <input name="114_num" type="text" class="quantity" value="0">
+                                <input type="button" class="increase" value="+">
+                            </td>
+                            <td><div class="p-sum">￥<span class="onlySum">0</span></div></td>
+                        </tr>
+                        
+
+                        <tr id="115">
+                            <td><img src="./images/115.jpg" style="width: 40px;"></td>
+                            <td>猴头菌片</td>
+                            <td><input name="115_id" value="115"></td>
+                            <td>山东东阿阿胶集团有限责任公司</td>
+                            <td class="num">521</td>
+                            <td>2021-01-01</td>
+                            <td class="onlyPrice">52.0</td>
+                            <td class="p-quantity">
+                                <input type="button" class="decrease" value="-">
+                                <input name="115_num" type="text" class="quantity" value="0">
+                                <input type="button" class="increase" value="+">
+                            </td>
+                            <td><div class="p-sum">￥<span class="onlySum">0</span></div></td>
+                        </tr>
+                        
+
+                        <tr id="116">
+                            <td><img src="./images/116.jpg" style="width: 40px;"></td>
+                            <td>胃康灵胶囊</td>
+                            <td><input name="116_id" value="116"></td>
+                            <td>山东东阿阿胶集团有限责任公司</td>
+                            <td class="num">521</td>
+                            <td>2021-01-01</td>
+                            <td class="onlyPrice">49.0</td>
+                            <td class="p-quantity">
+                                <input type="button" class="decrease" value="-">
+                                <input name="116_num" type="text" class="quantity" value="0">
+                                <input type="button" class="increase" value="+">
+                            </td>
+                            <td><div class="p-sum">￥<span class="onlySum">0</span></div></td>
+                        </tr>
+                        
+
+                        <tr id="117">
+                            <td><img src="./images/117.jpg" style="width: 40px;"></td>
+                            <td>铝碳酸镁咀嚼片</td>
+                            <td><input name="117_id" value="117"></td>
+                            <td>东莞市亚洲制药有限公司</td>
+                            <td class="num">521</td>
+                            <td>2021-01-01</td>
+                            <td class="onlyPrice">50.0</td>
+                            <td class="p-quantity">
+                                <input type="button" class="decrease" value="-">
+                                <input name="117_num" type="text" class="quantity" value="0">
+                                <input type="button" class="increase" value="+">
+                            </td>
+                            <td><div class="p-sum">￥<span class="onlySum">0</span></div></td>
+                        </tr>
+                        
+
+                        <tr id="118">
+                            <td><img src="./images/118.jpg" style="width: 40px;"></td>
+                            <td>奥美拉唑肠溶胶囊</td>
+                            <td><input name="118_id" value="118"></td>
+                            <td>东莞市亚洲制药有限公司</td>
+                            <td class="num">521</td>
+                            <td>2021-01-01</td>
+                            <td class="onlyPrice">8.0</td>
+                            <td class="p-quantity">
+                                <input type="button" class="decrease" value="-">
+                                <input name="118_num" type="text" class="quantity" value="0">
+                                <input type="button" class="increase" value="+">
+                            </td>
+                            <td><div class="p-sum">￥<span class="onlySum">0</span></div></td>
+                        </tr>
+                        
+
+                        <tr id="119">
+                            <td><img src="./images/119.jpg" style="width: 40px;"></td>
+                            <td>正露丸</td>
+                            <td><input name="119_id" value="119"></td>
+                            <td>东莞市亚洲制药有限公司</td>
+                            <td class="num">527</td>
+                            <td>2021-01-01</td>
+                            <td class="onlyPrice">45.0</td>
+                            <td class="p-quantity">
+                                <input type="button" class="decrease" value="-">
+                                <input name="119_num" type="text" class="quantity" value="0">
+                                <input type="button" class="increase" value="+">
+                            </td>
+                            <td><div class="p-sum">￥<span class="onlySum">0</span></div></td>
+                        </tr>
+                        
+
+                        <tr id="120">
+                            <td><img src="./images/120.jpg" style="width: 40px;"></td>
+                            <td>艾司奥美拉唑镁肠溶片</td>
+                            <td><input name="120_id" value="120"></td>
+                            <td>太极集团有限公司</td>
+                            <td class="num">521</td>
+                            <td>2021-01-01</td>
+                            <td class="onlyPrice">108.0</td>
+                            <td class="p-quantity">
+                                <input type="button" class="decrease" value="-">
+                                <input name="120_num" type="text" class="quantity" value="0">
+                                <input type="button" class="increase" value="+">
+                            </td>
+                            <td><div class="p-sum">￥<span class="onlySum">0</span></div></td>
+                        </tr>
+                        
+                    </tbody></table>
+                        <tbody><tr>
+                            <th>图片</th>
+                            <th>药品名称</th>
+                            <th>药品编号</th>
+                            <th>厂家名称</th>
+                            <th>库存数量（单位：件）</th>
+                            <th>生产日期</th>
+                            <th>售价</th>
+                            <th>已购数量</th>
+                            <th>小计</th>
+                        </tr>
+                        
+
+                        <tr id="100">
+                            <td><img src="./images/100.jpg" style="width: 40px;"></td>
+                            <td>双黄连口服液</td>
+                            <td><input name="100_id" value="100"></td>
+                            <td>东莞市亚洲制药有限公司</td>
+                            <td class="num"><input value="521"></td>
+                            <td>2021-01-01</td>
+                            <td class="onlyPrice">28.0</td>
+                            <td class="p-quantity">
+                                <input type="button" class="decrease" value="-">
+                                <input name="100_num" type="text" class="quantity" value="0">
+                                <input type="button" class="increase" value="+">
+                            </td>
+                            <td><div class="p-sum">￥<span class="onlySum">0</span></div></td>
+                        </tr>
+                        
+
+                        <tr id="100">
+                            <td><img src="./images/100.jpg" style="width: 40px;"></td>
+                            <td>双黄连口服液</td>
+                            <td><input name="100_id" value="100"></td>
+                            <td>东莞市亚洲制药有限公司</td>
+                            <td class="num"><input value="46"></td>
+                            <td>2021-01-02</td>
+                            <td class="onlyPrice">28.0</td>
+                            <td class="p-quantity">
+                                <input type="button" class="decrease" value="-">
+                                <input name="100_num" type="text" class="quantity" value="0">
+                                <input type="button" class="increase" value="+">
+                            </td>
+                            <td><div class="p-sum">￥<span class="onlySum">0</span></div></td>
+                        </tr>
+                        
+
+                        <tr id="101">
+                            <td><img src="./images/101.jpg" style="width: 40px;"></td>
+                            <td>999感冒灵</td>
+                            <td><input name="101_id" value="101"></td>
+                            <td>东莞市亚洲制药有限公司</td>
+                            <td class="num"><input value="557"></td>
+                            <td>2021-01-01</td>
+                            <td class="onlyPrice">30.0</td>
+                            <td class="p-quantity">
+                                <input type="button" class="decrease" value="-">
+                                <input name="101_num" type="text" class="quantity" value="0">
+                                <input type="button" class="increase" value="+">
+                            </td>
+                            <td><div class="p-sum">￥<span class="onlySum">0</span></div></td>
+                        </tr>
+                        
+
+                        <tr id="102">
+                            <td><img src="./images/102.jpg" style="width: 40px;"></td>
+                            <td>复方氨酚烷胺片</td>
+                            <td><input name="102_id" value="102"></td>
+                            <td>河南太龙药业股份有限公司</td>
+                            <td class="num"><input value="538"></td>
+                            <td>2021-01-01</td>
+                            <td class="onlyPrice">40.0</td>
+                            <td class="p-quantity">
+                                <input type="button" class="decrease" value="-">
+                                <input name="102_num" type="text" class="quantity" value="0">
+                                <input type="button" class="increase" value="+">
+                            </td>
+                            <td><div class="p-sum">￥<span class="onlySum">0</span></div></td>
+                        </tr>
+                        
+
+                        <tr id="103">
+                            <td><img src="./images/103.jpg" style="width: 40px;"></td>
+                            <td>连花清瘟胶囊</td>
+                            <td><input name="103_id" value="103"></td>
+                            <td>黑龙江瑞格制药有限公司</td>
+                            <td class="num"><input value="523"></td>
+                            <td>2021-01-01</td>
+                            <td class="onlyPrice">42.0</td>
+                            <td class="p-quantity">
+                                <input type="button" class="decrease" value="-">
+                                <input name="103_num" type="text" class="quantity" value="0">
+                                <input type="button" class="increase" value="+">
+                            </td>
+                            <td><div class="p-sum">￥<span class="onlySum">0</span></div></td>
+                        </tr>
+                        
+
+                        <tr id="104">
+                            <td><img src="./images/104.jpg" style="width: 40px;"></td>
+                            <td>汇仁肾宝片</td>
+                            <td><input name="104_id" value="104"></td>
+                            <td>中国医药集团有限公司</td>
+                            <td class="num"><input value="521"></td>
+                            <td>2021-01-01</td>
+                            <td class="onlyPrice">500.0</td>
+                            <td class="p-quantity">
+                                <input type="button" class="decrease" value="-">
+                                <input name="104_num" type="text" class="quantity" value="0">
+                                <input type="button" class="increase" value="+">
+                            </td>
+                            <td><div class="p-sum">￥<span class="onlySum">0</span></div></td>
+                        </tr>
+                        
+
+                        <tr id="105">
+                            <td><img src="./images/105.jpg" style="width: 40px;"></td>
+                            <td>六味地黄丸</td>
+                            <td><input name="105_id" value="105"></td>
+                            <td>南京医药产业有限公司</td>
+                            <td class="num"><input value="521"></td>
+                            <td>2021-01-01</td>
+                            <td class="onlyPrice">80.0</td>
+                            <td class="p-quantity">
+                                <input type="button" class="decrease" value="-">
+                                <input name="105_num" type="text" class="quantity" value="0">
+                                <input type="button" class="increase" value="+">
+                            </td>
+                            <td><div class="p-sum">￥<span class="onlySum">0</span></div></td>
+                        </tr>
+                        
+
+                        <tr id="106">
+                            <td><img src="./images/106.jpg" style="width: 40px;"></td>
+                            <td>阿莫西林胶囊</td>
+                            <td><input name="106_id" value="106"></td>
+                            <td>太极集团有限公司</td>
+                            <td class="num"><input value="521"></td>
+                            <td>2021-01-01</td>
+                            <td class="onlyPrice">45.0</td>
+                            <td class="p-quantity">
+                                <input type="button" class="decrease" value="-">
+                                <input name="106_num" type="text" class="quantity" value="0">
+                                <input type="button" class="increase" value="+">
+                            </td>
+                            <td><div class="p-sum">￥<span class="onlySum">0</span></div></td>
+                        </tr>
+                        
+
+                        <tr id="107">
+                            <td><img src="./images/107.jpg" style="width: 40px;"></td>
+                            <td>雷贝拉唑钠肠溶片</td>
+                            <td><input name="107_id" value="107"></td>
+                            <td>深圳中联广深医药集团股份有限公司</td>
+                            <td class="num"><input value="521"></td>
+                            <td>2021-01-01</td>
+                            <td class="onlyPrice">40.0</td>
+                            <td class="p-quantity">
+                                <input type="button" class="decrease" value="-">
+                                <input name="107_num" type="text" class="quantity" value="0">
+                                <input type="button" class="increase" value="+">
+                            </td>
+                            <td><div class="p-sum">￥<span class="onlySum">0</span></div></td>
+                        </tr>
+                        
+
+                        <tr id="108">
+                            <td><img src="./images/108.jpg" style="width: 40px;"></td>
+                            <td>板蓝根颗粒</td>
+                            <td><input name="108_id" value="108"></td>
+                            <td>太极集团有限公司</td>
+                            <td class="num"><input value="521"></td>
+                            <td>2021-01-01</td>
+                            <td class="onlyPrice">32.0</td>
+                            <td class="p-quantity">
+                                <input type="button" class="decrease" value="-">
+                                <input name="108_num" type="text" class="quantity" value="0">
+                                <input type="button" class="increase" value="+">
+                            </td>
+                            <td><div class="p-sum">￥<span class="onlySum">0</span></div></td>
+                        </tr>
+                        
+
+                        <tr id="109">
+                            <td><img src="./images/109.jpg" style="width: 40px;"></td>
+                            <td>三九胃泰颗粒</td>
+                            <td><input name="109_id" value="109"></td>
+                            <td>黑龙江瑞格制药有限公司</td>
+                            <td class="num"><input value="521"></td>
+                            <td>2021-01-01</td>
+                            <td class="onlyPrice">40.0</td>
+                            <td class="p-quantity">
+                                <input type="button" class="decrease" value="-">
+                                <input name="109_num" type="text" class="quantity" value="0">
+                                <input type="button" class="increase" value="+">
+                            </td>
+                            <td><div class="p-sum">￥<span class="onlySum">0</span></div></td>
+                        </tr>
+                        
+
+                        <tr id="110">
+                            <td><img src="./images/110.jpg" style="width: 40px;"></td>
+                            <td>百令胶囊</td>
+                            <td><input name="110_id" value="110"></td>
+                            <td>黑龙江瑞格制药有限公司</td>
+                            <td class="num"><input value="521"></td>
+                            <td>2021-01-01</td>
+                            <td class="onlyPrice">95.0</td>
+                            <td class="p-quantity">
+                                <input type="button" class="decrease" value="-">
+                                <input name="110_num" type="text" class="quantity" value="0">
+                                <input type="button" class="increase" value="+">
+                            </td>
+                            <td><div class="p-sum">￥<span class="onlySum">0</span></div></td>
+                        </tr>
+                        
+
+                        <tr id="111">
+                            <td><img src="./images/111.jpg" style="width: 40px;"></td>
+                            <td>盐酸氨溴索口服溶液</td>
+                            <td><input name="111_id" value="111"></td>
+                            <td>黑龙江瑞格制药有限公司</td>
+                            <td class="num"><input value="521"></td>
+                            <td>2021-01-01</td>
+                            <td class="onlyPrice">40.0</td>
+                            <td class="p-quantity">
+                                <input type="button" class="decrease" value="-">
+                                <input name="111_num" type="text" class="quantity" value="0">
+                                <input type="button" class="increase" value="+">
+                            </td>
+                            <td><div class="p-sum">￥<span class="onlySum">0</span></div></td>
+                        </tr>
+                        
+
+                        <tr id="112">
+                            <td><img src="./images/112.jpg" style="width: 40px;"></td>
+                            <td>黄龙止咳颗粒</td>
+                            <td><input name="112_id" value="112"></td>
+                            <td>河南太龙药业股份有限公司</td>
+                            <td class="num"><input value="521"></td>
+                            <td>2021-01-01</td>
+                            <td class="onlyPrice">82.0</td>
+                            <td class="p-quantity">
+                                <input type="button" class="decrease" value="-">
+                                <input name="112_num" type="text" class="quantity" value="0">
+                                <input type="button" class="increase" value="+">
+                            </td>
+                            <td><div class="p-sum">￥<span class="onlySum">0</span></div></td>
+                        </tr>
+                        
+
+                        <tr id="113">
+                            <td><img src="./images/113.jpg" style="width: 40px;"></td>
+                            <td>胃苏颗粒</td>
+                            <td><input name="113_id" value="113"></td>
+                            <td>河南太龙药业股份有限公司</td>
+                            <td class="num"><input value="521"></td>
+                            <td>2021-01-01</td>
+                            <td class="onlyPrice">45.0</td>
+                            <td class="p-quantity">
+                                <input type="button" class="decrease" value="-">
+                                <input name="113_num" type="text" class="quantity" value="0">
+                                <input type="button" class="increase" value="+">
+                            </td>
+                            <td><div class="p-sum">￥<span class="onlySum">0</span></div></td>
+                        </tr>
+                        
+
+                        <tr id="114">
+                            <td><img src="./images/114.jpg" style="width: 40px;"></td>
+                            <td>大山楂丸</td>
+                            <td><input name="114_id" value="114"></td>
+                            <td>山东东阿阿胶集团有限责任公司</td>
+                            <td class="num"><input value="521"></td>
+                            <td>2021-01-01</td>
+                            <td class="onlyPrice">55.0</td>
+                            <td class="p-quantity">
+                                <input type="button" class="decrease" value="-">
+                                <input name="114_num" type="text" class="quantity" value="0">
+                                <input type="button" class="increase" value="+">
+                            </td>
+                            <td><div class="p-sum">￥<span class="onlySum">0</span></div></td>
+                        </tr>
+                        
+
+                        <tr id="115">
+                            <td><img src="./images/115.jpg" style="width: 40px;"></td>
+                            <td>猴头菌片</td>
+                            <td><input name="115_id" value="115"></td>
+                            <td>山东东阿阿胶集团有限责任公司</td>
+                            <td class="num"><input value="521"></td>
+                            <td>2021-01-01</td>
+                            <td class="onlyPrice">52.0</td>
+                            <td class="p-quantity">
+                                <input type="button" class="decrease" value="-">
+                                <input name="115_num" type="text" class="quantity" value="0">
+                                <input type="button" class="increase" value="+">
+                            </td>
+                            <td><div class="p-sum">￥<span class="onlySum">0</span></div></td>
+                        </tr>
+                        
+
+                        <tr id="116">
+                            <td><img src="./images/116.jpg" style="width: 40px;"></td>
+                            <td>胃康灵胶囊</td>
+                            <td><input name="116_id" value="116"></td>
+                            <td>山东东阿阿胶集团有限责任公司</td>
+                            <td class="num"><input value="521"></td>
+                            <td>2021-01-01</td>
+                            <td class="onlyPrice">49.0</td>
+                            <td class="p-quantity">
+                                <input type="button" class="decrease" value="-">
+                                <input name="116_num" type="text" class="quantity" value="0">
+                                <input type="button" class="increase" value="+">
+                            </td>
+                            <td><div class="p-sum">￥<span class="onlySum">0</span></div></td>
+                        </tr>
+                        
+
+                        <tr id="117">
+                            <td><img src="./images/117.jpg" style="width: 40px;"></td>
+                            <td>铝碳酸镁咀嚼片</td>
+                            <td><input name="117_id" value="117"></td>
+                            <td>东莞市亚洲制药有限公司</td>
+                            <td class="num"><input value="521"></td>
+                            <td>2021-01-01</td>
+                            <td class="onlyPrice">50.0</td>
+                            <td class="p-quantity">
+                                <input type="button" class="decrease" value="-">
+                                <input name="117_num" type="text" class="quantity" value="0">
+                                <input type="button" class="increase" value="+">
+                            </td>
+                            <td><div class="p-sum">￥<span class="onlySum">0</span></div></td>
+                        </tr>
+                        
+
+                        <tr id="118">
+                            <td><img src="./images/118.jpg" style="width: 40px;"></td>
+                            <td>奥美拉唑肠溶胶囊</td>
+                            <td><input name="118_id" value="118"></td>
+                            <td>东莞市亚洲制药有限公司</td>
+                            <td class="num"><input value="521"></td>
+                            <td>2021-01-01</td>
+                            <td class="onlyPrice">8.0</td>
+                            <td class="p-quantity">
+                                <input type="button" class="decrease" value="-">
+                                <input name="118_num" type="text" class="quantity" value="0">
+                                <input type="button" class="increase" value="+">
+                            </td>
+                            <td><div class="p-sum">￥<span class="onlySum">0</span></div></td>
+                        </tr>
+                        
+
+                        <tr id="119">
+                            <td><img src="./images/119.jpg" style="width: 40px;"></td>
+                            <td>正露丸</td>
+                            <td><input name="119_id" value="119"></td>
+                            <td>东莞市亚洲制药有限公司</td>
+                            <td class="num"><input value="527"></td>
+                            <td>2021-01-01</td>
+                            <td class="onlyPrice">45.0</td>
+                            <td class="p-quantity">
+                                <input type="button" class="decrease" value="-">
+                                <input name="119_num" type="text" class="quantity" value="0">
+                                <input type="button" class="increase" value="+">
+                            </td>
+                            <td><div class="p-sum">￥<span class="onlySum">0</span></div></td>
+                        </tr>
+                        
+
+                        <tr id="120">
+                            <td><img src="./images/120.jpg" style="width: 40px;"></td>
+                            <td>艾司奥美拉唑镁肠溶片</td>
+                            <td><input name="120_id" value="120"></td>
+                            <td>太极集团有限公司</td>
+                            <td class="num"><input value="521"></td>
+                            <td>2021-01-01</td>
+                            <td class="onlyPrice">108.0</td>
+                            <td class="p-quantity">
+                                <input type="button" class="decrease" value="-">
+                                <input name="120_num" type="text" class="quantity" value="0">
+                                <input type="button" class="increase" value="+">
+                            </td>
+                            <td><div class="p-sum">￥<span class="onlySum">0</span></div></td>
+                        </tr>
+                        
+                    </tbody></table>
+                        <tbody><tr>
+                            <th>图片</th>
+                            <th>药品名称</th>
+                            <th>药品编号</th>
+                            <th>厂家名称</th>
+                            <th>库存数量（单位：件）</th>
+                            <th>生产日期</th>
+                            <th>售价</th>
+                            <th>已购数量</th>
+                            <th>小计</th>
+                        </tr>
+                        
+
+                        <tr id="100">
+                            <td><img src="./images/100.jpg" style="width: 40px;"></td>
+                            <td>双黄连口服液</td>
+                            <td><input name="100_id" value="100"></td>
+                            <td>东莞市亚洲制药有限公司</td>
+                            <td class="num">521</td>
+                            <td>2021-01-01</td>
+                            <td>28.0</td>
+                            <td class="p-quantity">
+                                <input type="button" class="decrease" value="-">
+                                <input name="100_num" type="text" class="quantity" value="0">
+                                <input type="button" class="increase" value="+">
+                            </td>
+                            <td><div class="p-sum">￥<span class="onlySum">0</span></div></td>
+                        </tr>
+                        
+
+                        <tr id="100">
+                            <td><img src="./images/100.jpg" style="width: 40px;"></td>
+                            <td>双黄连口服液</td>
+                            <td><input name="100_id" value="100"></td>
+                            <td>东莞市亚洲制药有限公司</td>
+                            <td>45</td>
+                            <td>2021-01-02</td>
+                            <td>28.0</td>
+                            <td class="p-quantity">
+                                <input type="button" class="decrease" value="-">
+                                <input name="100_num" type="text" class="quantity" value="0">
+                                <input type="button" class="increase" value="+">
+                            </td>
+                            <td><div class="p-sum">￥<span class="onlySum">0</span></div></td>
+                        </tr>
+                        
+
+                        <tr id="101">
+                            <td><img src="./images/101.jpg" style="width: 40px;"></td>
+                            <td>999感冒灵</td>
+                            <td><input name="101_id" value="101"></td>
+                            <td>东莞市亚洲制药有限公司</td>
+                            <td>556</td>
+                            <td>2021-01-01</td>
+                            <td>30.0</td>
+                            <td class="p-quantity">
+                                <input type="button" class="decrease" value="-">
+                                <input name="101_num" type="text" class="quantity" value="0">
+                                <input type="button" class="increase" value="+">
+                            </td>
+                            <td><div class="p-sum">￥<span class="onlySum">0</span></div></td>
+                        </tr>
+                        
+
+                        <tr id="102">
+                            <td><img src="./images/102.jpg" style="width: 40px;"></td>
+                            <td>复方氨酚烷胺片</td>
+                            <td><input name="102_id" value="102"></td>
+                            <td>河南太龙药业股份有限公司</td>
+                            <td>537</td>
+                            <td>2021-01-01</td>
+                            <td>40.0</td>
+                            <td class="p-quantity">
+                                <input type="button" class="decrease" value="-">
+                                <input name="102_num" type="text" class="quantity" value="0">
+                                <input type="button" class="increase" value="+">
+                            </td>
+                            <td><div class="p-sum">￥<span class="onlySum">0</span></div></td>
+                        </tr>
+                        
+
+                        <tr id="103">
+                            <td><img src="./images/103.jpg" style="width: 40px;"></td>
+                            <td>连花清瘟胶囊</td>
+                            <td><input name="103_id" value="103"></td>
+                            <td>黑龙江瑞格制药有限公司</td>
+                            <td>523</td>
+                            <td>2021-01-01</td>
+                            <td>42.0</td>
+                            <td class="p-quantity">
+                                <input type="button" class="decrease" value="-">
+                                <input name="103_num" type="text" class="quantity" value="0">
+                                <input type="button" class="increase" value="+">
+                            </td>
+                            <td><div class="p-sum">￥<span class="onlySum">0</span></div></td>
+                        </tr>
+                        
+
+                        <tr id="104">
+                            <td><img src="./images/104.jpg" style="width: 40px;"></td>
+                            <td>汇仁肾宝片</td>
+                            <td><input name="104_id" value="104"></td>
+                            <td>中国医药集团有限公司</td>
+                            <td>521</td>
+                            <td>2021-01-01</td>
+                            <td>500.0</td>
+                            <td class="p-quantity">
+                                <input type="button" class="decrease" value="-">
+                                <input name="104_num" type="text" class="quantity" value="0">
+                                <input type="button" class="increase" value="+">
+                            </td>
+                            <td><div class="p-sum">￥<span class="onlySum">0</span></div></td>
+                        </tr>
+                        
+
+                        <tr id="105">
+                            <td><img src="./images/105.jpg" style="width: 40px;"></td>
+                            <td>六味地黄丸</td>
+                            <td><input name="105_id" value="105"></td>
+                            <td>南京医药产业有限公司</td>
+                            <td>521</td>
+                            <td>2021-01-01</td>
+                            <td>80.0</td>
+                            <td class="p-quantity">
+                                <input type="button" class="decrease" value="-">
+                                <input name="105_num" type="text" class="quantity" value="0">
+                                <input type="button" class="increase" value="+">
+                            </td>
+                            <td><div class="p-sum">￥<span class="onlySum">0</span></div></td>
+                        </tr>
+                        
+
+                        <tr id="106">
+                            <td><img src="./images/106.jpg" style="width: 40px;"></td>
+                            <td>阿莫西林胶囊</td>
+                            <td><input name="106_id" value="106"></td>
+                            <td>太极集团有限公司</td>
+                            <td>521</td>
+                            <td>2021-01-01</td>
+                            <td>45.0</td>
+                            <td class="p-quantity">
+                                <input type="button" class="decrease" value="-">
+                                <input name="106_num" type="text" class="quantity" value="0">
+                                <input type="button" class="increase" value="+">
+                            </td>
+                            <td><div class="p-sum">￥<span class="onlySum">0</span></div></td>
+                        </tr>
+                        
+
+                        <tr id="107">
+                            <td><img src="./images/107.jpg" style="width: 40px;"></td>
+                            <td>雷贝拉唑钠肠溶片</td>
+                            <td><input name="107_id" value="107"></td>
+                            <td>深圳中联广深医药集团股份有限公司</td>
+                            <td>521</td>
+                            <td>2021-01-01</td>
+                            <td>40.0</td>
+                            <td class="p-quantity">
+                                <input type="button" class="decrease" value="-">
+                                <input name="107_num" type="text" class="quantity" value="0">
+                                <input type="button" class="increase" value="+">
+                            </td>
+                            <td><div class="p-sum">￥<span class="onlySum">0</span></div></td>
+                        </tr>
+                        
+
+                        <tr id="108">
+                            <td><img src="./images/108.jpg" style="width: 40px;"></td>
+                            <td>板蓝根颗粒</td>
+                            <td><input name="108_id" value="108"></td>
+                            <td>太极集团有限公司</td>
+                            <td>521</td>
+                            <td>2021-01-01</td>
+                            <td>32.0</td>
+                            <td class="p-quantity">
+                                <input type="button" class="decrease" value="-">
+                                <input name="108_num" type="text" class="quantity" value="0">
+                                <input type="button" class="increase" value="+">
+                            </td>
+                            <td><div class="p-sum">￥<span class="onlySum">0</span></div></td>
+                        </tr>
+                        
+
+                        <tr id="109">
+                            <td><img src="./images/109.jpg" style="width: 40px;"></td>
+                            <td>三九胃泰颗粒</td>
+                            <td><input name="109_id" value="109"></td>
+                            <td>黑龙江瑞格制药有限公司</td>
+                            <td>521</td>
+                            <td>2021-01-01</td>
+                            <td>40.0</td>
+                            <td class="p-quantity">
+                                <input type="button" class="decrease" value="-">
+                                <input name="109_num" type="text" class="quantity" value="0">
+                                <input type="button" class="increase" value="+">
+                            </td>
+                            <td><div class="p-sum">￥<span class="onlySum">0</span></div></td>
+                        </tr>
+                        
+
+                        <tr id="110">
+                            <td><img src="./images/110.jpg" style="width: 40px;"></td>
+                            <td>百令胶囊</td>
+                            <td><input name="110_id" value="110"></td>
+                            <td>黑龙江瑞格制药有限公司</td>
+                            <td>521</td>
+                            <td>2021-01-01</td>
+                            <td>95.0</td>
+                            <td class="p-quantity">
+                                <input type="button" class="decrease" value="-">
+                                <input name="110_num" type="text" class="quantity" value="0">
+                                <input type="button" class="increase" value="+">
+                            </td>
+                            <td><div class="p-sum">￥<span class="onlySum">0</span></div></td>
+                        </tr>
+                        
+
+                        <tr id="111">
+                            <td><img src="./images/111.jpg" style="width: 40px;"></td>
+                            <td>盐酸氨溴索口服溶液</td>
+                            <td><input name="111_id" value="111"></td>
+                            <td>黑龙江瑞格制药有限公司</td>
+                            <td>521</td>
+                            <td>2021-01-01</td>
+                            <td>40.0</td>
+                            <td class="p-quantity">
+                                <input type="button" class="decrease" value="-">
+                                <input name="111_num" type="text" class="quantity" value="0">
+                                <input type="button" class="increase" value="+">
+                            </td>
+                            <td><div class="p-sum">￥<span class="onlySum">0</span></div></td>
+                        </tr>
+                        
+
+                        <tr id="112">
+                            <td><img src="./images/112.jpg" style="width: 40px;"></td>
+                            <td>黄龙止咳颗粒</td>
+                            <td><input name="112_id" value="112"></td>
+                            <td>河南太龙药业股份有限公司</td>
+                            <td>521</td>
+                            <td>2021-01-01</td>
+                            <td>82.0</td>
+                            <td class="p-quantity">
+                                <input type="button" class="decrease" value="-">
+                                <input name="112_num" type="text" class="quantity" value="0">
+                                <input type="button" class="increase" value="+">
+                            </td>
+                            <td><div class="p-sum">￥<span class="onlySum">0</span></div></td>
+                        </tr>
+                        
+
+                        <tr id="113">
+                            <td><img src="./images/113.jpg" style="width: 40px;"></td>
+                            <td>胃苏颗粒</td>
+                            <td><input name="113_id" value="113"></td>
+                            <td>河南太龙药业股份有限公司</td>
+                            <td>521</td>
+                            <td>2021-01-01</td>
+                            <td>45.0</td>
+                            <td class="p-quantity">
+                                <input type="button" class="decrease" value="-">
+                                <input name="113_num" type="text" class="quantity" value="0">
+                                <input type="button" class="increase" value="+">
+                            </td>
+                            <td><div class="p-sum">￥<span class="onlySum">0</span></div></td>
+                        </tr>
+                        
+
+                        <tr id="114">
+                            <td><img src="./images/114.jpg" style="width: 40px;"></td>
+                            <td>大山楂丸</td>
+                            <td><input name="114_id" value="114"></td>
+                            <td>山东东阿阿胶集团有限责任公司</td>
+                            <td>521</td>
+                            <td>2021-01-01</td>
+                            <td>55.0</td>
+                            <td class="p-quantity">
+                                <input type="button" class="decrease" value="-">
+                                <input name="114_num" type="text" class="quantity" value="0">
+                                <input type="button" class="increase" value="+">
+                            </td>
+                            <td><div class="p-sum">￥<span class="onlySum">0</span></div></td>
+                        </tr>
+                        
+
+                        <tr id="115">
+                            <td><img src="./images/115.jpg" style="width: 40px;"></td>
+                            <td>猴头菌片</td>
+                            <td><input name="115_id" value="115"></td>
+                            <td>山东东阿阿胶集团有限责任公司</td>
+                            <td>521</td>
+                            <td>2021-01-01</td>
+                            <td>52.0</td>
+                            <td class="p-quantity">
+                                <input type="button" class="decrease" value="-">
+                                <input name="115_num" type="text" class="quantity" value="0">
+                                <input type="button" class="increase" value="+">
+                            </td>
+                            <td><div class="p-sum">￥<span class="onlySum">0</span></div></td>
+                        </tr>
+                        
+
+                        <tr id="116">
+                            <td><img src="./images/116.jpg" style="width: 40px;"></td>
+                            <td>胃康灵胶囊</td>
+                            <td><input name="116_id" value="116"></td>
+                            <td>山东东阿阿胶集团有限责任公司</td>
+                            <td>521</td>
+                            <td>2021-01-01</td>
+                            <td>49.0</td>
+                            <td class="p-quantity">
+                                <input type="button" class="decrease" value="-">
+                                <input name="116_num" type="text" class="quantity" value="0">
+                                <input type="button" class="increase" value="+">
+                            </td>
+                            <td><div class="p-sum">￥<span class="onlySum">0</span></div></td>
+                        </tr>
+                        
+
+                        <tr id="117">
+                            <td><img src="./images/117.jpg" style="width: 40px;"></td>
+                            <td>铝碳酸镁咀嚼片</td>
+                            <td><input name="117_id" value="117"></td>
+                            <td>东莞市亚洲制药有限公司</td>
+                            <td>521</td>
+                            <td>2021-01-01</td>
+                            <td>50.0</td>
+                            <td class="p-quantity">
+                                <input type="button" class="decrease" value="-">
+                                <input name="117_num" type="text" class="quantity" value="0">
+                                <input type="button" class="increase" value="+">
+                            </td>
+                            <td><div class="p-sum">￥<span class="onlySum">0</span></div></td>
+                        </tr>
+                        
+
+                        <tr id="118">
+                            <td><img src="./images/118.jpg" style="width: 40px;"></td>
+                            <td>奥美拉唑肠溶胶囊</td>
+                            <td><input name="118_id" value="118"></td>
+                            <td>东莞市亚洲制药有限公司</td>
+                            <td>521</td>
+                            <td>2021-01-01</td>
+                            <td>8.0</td>
+                            <td class="p-quantity">
+                                <input type="button" class="decrease" value="-">
+                                <input name="118_num" type="text" class="quantity" value="0">
+                                <input type="button" class="increase" value="+">
+                            </td>
+                            <td><div class="p-sum">￥<span class="onlySum">0</span></div></td>
+                        </tr>
+                        
+
+                        <tr id="119">
+                            <td><img src="./images/119.jpg" style="width: 40px;"></td>
+                            <td>正露丸</td>
+                            <td><input name="119_id" value="119"></td>
+                            <td>东莞市亚洲制药有限公司</td>
+                            <td>527</td>
+                            <td>2021-01-01</td>
+                            <td>45.0</td>
+                            <td class="p-quantity">
+                                <input type="button" class="decrease" value="-">
+                                <input name="119_num" type="text" class="quantity" value="0">
+                                <input type="button" class="increase" value="+">
+                            </td>
+                            <td><div class="p-sum">￥<span class="onlySum">0</span></div></td>
+                        </tr>
+                        
+
+                        <tr id="120">
+                            <td><img src="./images/120.jpg" style="width: 40px;"></td>
+                            <td>艾司奥美拉唑镁肠溶片</td>
+                            <td><input name="120_id" value="120"></td>
+                            <td>太极集团有限公司</td>
+                            <td>521</td>
+                            <td>2021-01-01</td>
+                            <td>108.0</td>
+                            <td class="p-quantity">
+                                <input type="button" class="decrease" value="-">
+                                <input name="120_num" type="text" class="quantity" value="0">
+                                <input type="button" class="increase" value="+">
+                            </td>
+                            <td><div class="p-sum">￥<span class="onlySum">0</span></div></td>
+                        </tr>
+                        
+                    </tbody></table>
+                        <tbody><tr>
+                            <th>图片</th>
+                            <th>药品名称</th>
+                            <th>药品编号</th>
+                            <th>厂家名称</th>
+                            <th>库存数量（单位：件）</th>
+                            <th>生产日期</th>
+                            <th>售价</th>
+                            <th>已购数量</th>
+                            <th>小计</th>
+                        </tr>
+                        
+
+                        <tr id="100">
+                            <td><img src="./images/100.jpg" style="width: 40px;"></td>
+                            <td>双黄连口服液</td>
+                            <td><input name="100_id" value="100"></td>
+                            <td>东莞市亚洲制药有限公司</td>
+                            <td>521</td>
+                            <td>2021-01-01</td>
+                            <td>28.0</td>
+                            <td class="p-quantity">
+                                <input type="button" class="decrease" value="-">
+                                <input name="100_num" type="text" class="quantity" value="2">
+                                <input type="button" class="increase" value="+">
+                            </td>
+                            <td><div class="p-sum">￥<span class="onlySum">0</span></div></td>
+                        </tr>
+                        
+
+                        <tr id="100">
+                            <td><img src="./images/100.jpg" style="width: 40px;"></td>
+                            <td>双黄连口服液</td>
+                            <td><input name="100_id" value="100"></td>
+                            <td>东莞市亚洲制药有限公司</td>
+                            <td>45</td>
+                            <td>2021-01-02</td>
+                            <td>28.0</td>
+                            <td class="p-quantity">
+                                <input type="button" class="decrease" value="-">
+                                <input name="100_num" type="text" class="quantity" value="3">
+                                <input type="button" class="increase" value="+">
+                            </td>
+                            <td><div class="p-sum">￥<span class="onlySum">0</span></div></td>
+                        </tr>
+                        
+
+                        <tr id="101">
+                            <td><img src="./images/101.jpg" style="width: 40px;"></td>
+                            <td>999感冒灵</td>
+                            <td><input name="101_id" value="101"></td>
+                            <td>东莞市亚洲制药有限公司</td>
+                            <td>556</td>
+                            <td>2021-01-01</td>
+                            <td>30.0</td>
+                            <td class="p-quantity">
+                                <input type="button" class="decrease" value="-">
+                                <input name="101_num" type="text" class="quantity" value="0">
+                                <input type="button" class="increase" value="+">
+                            </td>
+                            <td><div class="p-sum">￥<span class="onlySum">0</span></div></td>
+                        </tr>
+                        
+
+                        <tr id="102">
+                            <td><img src="./images/102.jpg" style="width: 40px;"></td>
+                            <td>复方氨酚烷胺片</td>
+                            <td><input name="102_id" value="102"></td>
+                            <td>河南太龙药业股份有限公司</td>
+                            <td>537</td>
+                            <td>2021-01-01</td>
+                            <td>40.0</td>
+                            <td class="p-quantity">
+                                <input type="button" class="decrease" value="-">
+                                <input name="102_num" type="text" class="quantity" value="0">
+                                <input type="button" class="increase" value="+">
+                            </td>
+                            <td><div class="p-sum">￥<span class="onlySum">0</span></div></td>
+                        </tr>
+                        
+
+                        <tr id="103">
+                            <td><img src="./images/103.jpg" style="width: 40px;"></td>
+                            <td>连花清瘟胶囊</td>
+                            <td><input name="103_id" value="103"></td>
+                            <td>黑龙江瑞格制药有限公司</td>
+                            <td>523</td>
+                            <td>2021-01-01</td>
+                            <td>42.0</td>
+                            <td class="p-quantity">
+                                <input type="button" class="decrease" value="-">
+                                <input name="103_num" type="text" class="quantity" value="0">
+                                <input type="button" class="increase" value="+">
+                            </td>
+                            <td><div class="p-sum">￥<span class="onlySum">0</span></div></td>
+                        </tr>
+                        
+
+                        <tr id="104">
+                            <td><img src="./images/104.jpg" style="width: 40px;"></td>
+                            <td>汇仁肾宝片</td>
+                            <td><input name="104_id" value="104"></td>
+                            <td>中国医药集团有限公司</td>
+                            <td>521</td>
+                            <td>2021-01-01</td>
+                            <td>500.0</td>
+                            <td class="p-quantity">
+                                <input type="button" class="decrease" value="-">
+                                <input name="104_num" type="text" class="quantity" value="0">
+                                <input type="button" class="increase" value="+">
+                            </td>
+                            <td><div class="p-sum">￥<span class="onlySum">0</span></div></td>
+                        </tr>
+                        
+
+                        <tr id="105">
+                            <td><img src="./images/105.jpg" style="width: 40px;"></td>
+                            <td>六味地黄丸</td>
+                            <td><input name="105_id" value="105"></td>
+                            <td>南京医药产业有限公司</td>
+                            <td>521</td>
+                            <td>2021-01-01</td>
+                            <td>80.0</td>
+                            <td class="p-quantity">
+                                <input type="button" class="decrease" value="-">
+                                <input name="105_num" type="text" class="quantity" value="0">
+                                <input type="button" class="increase" value="+">
+                            </td>
+                            <td><div class="p-sum">￥<span class="onlySum">0</span></div></td>
+                        </tr>
+                        
+
+                        <tr id="106">
+                            <td><img src="./images/106.jpg" style="width: 40px;"></td>
+                            <td>阿莫西林胶囊</td>
+                            <td><input name="106_id" value="106"></td>
+                            <td>太极集团有限公司</td>
+                            <td>521</td>
+                            <td>2021-01-01</td>
+                            <td>45.0</td>
+                            <td class="p-quantity">
+                                <input type="button" class="decrease" value="-">
+                                <input name="106_num" type="text" class="quantity" value="0">
+                                <input type="button" class="increase" value="+">
+                            </td>
+                            <td><div class="p-sum">￥<span class="onlySum">0</span></div></td>
+                        </tr>
+                        
+
+                        <tr id="107">
+                            <td><img src="./images/107.jpg" style="width: 40px;"></td>
+                            <td>雷贝拉唑钠肠溶片</td>
+                            <td><input name="107_id" value="107"></td>
+                            <td>深圳中联广深医药集团股份有限公司</td>
+                            <td>521</td>
+                            <td>2021-01-01</td>
+                            <td>40.0</td>
+                            <td class="p-quantity">
+                                <input type="button" class="decrease" value="-">
+                                <input name="107_num" type="text" class="quantity" value="0">
+                                <input type="button" class="increase" value="+">
+                            </td>
+                            <td><div class="p-sum">￥<span class="onlySum">0</span></div></td>
+                        </tr>
+                        
+
+                        <tr id="108">
+                            <td><img src="./images/108.jpg" style="width: 40px;"></td>
+                            <td>板蓝根颗粒</td>
+                            <td><input name="108_id" value="108"></td>
+                            <td>太极集团有限公司</td>
+                            <td>521</td>
+                            <td>2021-01-01</td>
+                            <td>32.0</td>
+                            <td class="p-quantity">
+                                <input type="button" class="decrease" value="-">
+                                <input name="108_num" type="text" class="quantity" value="0">
+                                <input type="button" class="increase" value="+">
+                            </td>
+                            <td><div class="p-sum">￥<span class="onlySum">0</span></div></td>
+                        </tr>
+                        
+
+                        <tr id="109">
+                            <td><img src="./images/109.jpg" style="width: 40px;"></td>
+                            <td>三九胃泰颗粒</td>
+                            <td><input name="109_id" value="109"></td>
+                            <td>黑龙江瑞格制药有限公司</td>
+                            <td>521</td>
+                            <td>2021-01-01</td>
+                            <td>40.0</td>
+                            <td class="p-quantity">
+                                <input type="button" class="decrease" value="-">
+                                <input name="109_num" type="text" class="quantity" value="0">
+                                <input type="button" class="increase" value="+">
+                            </td>
+                            <td><div class="p-sum">￥<span class="onlySum">0</span></div></td>
+                        </tr>
+                        
+
+                        <tr id="110">
+                            <td><img src="./images/110.jpg" style="width: 40px;"></td>
+                            <td>百令胶囊</td>
+                            <td><input name="110_id" value="110"></td>
+                            <td>黑龙江瑞格制药有限公司</td>
+                            <td>521</td>
+                            <td>2021-01-01</td>
+                            <td>95.0</td>
+                            <td class="p-quantity">
+                                <input type="button" class="decrease" value="-">
+                                <input name="110_num" type="text" class="quantity" value="0">
+                                <input type="button" class="increase" value="+">
+                            </td>
+                            <td><div class="p-sum">￥<span class="onlySum">0</span></div></td>
+                        </tr>
+                        
+
+                        <tr id="111">
+                            <td><img src="./images/111.jpg" style="width: 40px;"></td>
+                            <td>盐酸氨溴索口服溶液</td>
+                            <td><input name="111_id" value="111"></td>
+                            <td>黑龙江瑞格制药有限公司</td>
+                            <td>521</td>
+                            <td>2021-01-01</td>
+                            <td>40.0</td>
+                            <td class="p-quantity">
+                                <input type="button" class="decrease" value="-">
+                                <input name="111_num" type="text" class="quantity" value="0">
+                                <input type="button" class="increase" value="+">
+                            </td>
+                            <td><div class="p-sum">￥<span class="onlySum">0</span></div></td>
+                        </tr>
+                        
+
+                        <tr id="112">
+                            <td><img src="./images/112.jpg" style="width: 40px;"></td>
+                            <td>黄龙止咳颗粒</td>
+                            <td><input name="112_id" value="112"></td>
+                            <td>河南太龙药业股份有限公司</td>
+                            <td>521</td>
+                            <td>2021-01-01</td>
+                            <td>82.0</td>
+                            <td class="p-quantity">
+                                <input type="button" class="decrease" value="-">
+                                <input name="112_num" type="text" class="quantity" value="0">
+                                <input type="button" class="increase" value="+">
+                            </td>
+                            <td><div class="p-sum">￥<span class="onlySum">0</span></div></td>
+                        </tr>
+                        
+
+                        <tr id="113">
+                            <td><img src="./images/113.jpg" style="width: 40px;"></td>
+                            <td>胃苏颗粒</td>
+                            <td><input name="113_id" value="113"></td>
+                            <td>河南太龙药业股份有限公司</td>
+                            <td>521</td>
+                            <td>2021-01-01</td>
+                            <td>45.0</td>
+                            <td class="p-quantity">
+                                <input type="button" class="decrease" value="-">
+                                <input name="113_num" type="text" class="quantity" value="0">
+                                <input type="button" class="increase" value="+">
+                            </td>
+                            <td><div class="p-sum">￥<span class="onlySum">0</span></div></td>
+                        </tr>
+                        
+
+                        <tr id="114">
+                            <td><img src="./images/114.jpg" style="width: 40px;"></td>
+                            <td>大山楂丸</td>
+                            <td><input name="114_id" value="114"></td>
+                            <td>山东东阿阿胶集团有限责任公司</td>
+                            <td>521</td>
+                            <td>2021-01-01</td>
+                            <td>55.0</td>
+                            <td class="p-quantity">
+                                <input type="button" class="decrease" value="-">
+                                <input name="114_num" type="text" class="quantity" value="0">
+                                <input type="button" class="increase" value="+">
+                            </td>
+                            <td><div class="p-sum">￥<span class="onlySum">0</span></div></td>
+                        </tr>
+                        
+
+                        <tr id="115">
+                            <td><img src="./images/115.jpg" style="width: 40px;"></td>
+                            <td>猴头菌片</td>
+                            <td><input name="115_id" value="115"></td>
+                            <td>山东东阿阿胶集团有限责任公司</td>
+                            <td>521</td>
+                            <td>2021-01-01</td>
+                            <td>52.0</td>
+                            <td class="p-quantity">
+                                <input type="button" class="decrease" value="-">
+                                <input name="115_num" type="text" class="quantity" value="0">
+                                <input type="button" class="increase" value="+">
+                            </td>
+                            <td><div class="p-sum">￥<span class="onlySum">0</span></div></td>
+                        </tr>
+                        
+
+                        <tr id="116">
+                            <td><img src="./images/116.jpg" style="width: 40px;"></td>
+                            <td>胃康灵胶囊</td>
+                            <td><input name="116_id" value="116"></td>
+                            <td>山东东阿阿胶集团有限责任公司</td>
+                            <td>521</td>
+                            <td>2021-01-01</td>
+                            <td>49.0</td>
+                            <td class="p-quantity">
+                                <input type="button" class="decrease" value="-">
+                                <input name="116_num" type="text" class="quantity" value="0">
+                                <input type="button" class="increase" value="+">
+                            </td>
+                            <td><div class="p-sum">￥<span class="onlySum">0</span></div></td>
+                        </tr>
+                        
+
+                        <tr id="117">
+                            <td><img src="./images/117.jpg" style="width: 40px;"></td>
+                            <td>铝碳酸镁咀嚼片</td>
+                            <td><input name="117_id" value="117"></td>
+                            <td>东莞市亚洲制药有限公司</td>
+                            <td>521</td>
+                            <td>2021-01-01</td>
+                            <td>50.0</td>
+                            <td class="p-quantity">
+                                <input type="button" class="decrease" value="-">
+                                <input name="117_num" type="text" class="quantity" value="0">
+                                <input type="button" class="increase" value="+">
+                            </td>
+                            <td><div class="p-sum">￥<span class="onlySum">0</span></div></td>
+                        </tr>
+                        
+
+                        <tr id="118">
+                            <td><img src="./images/118.jpg" style="width: 40px;"></td>
+                            <td>奥美拉唑肠溶胶囊</td>
+                            <td><input name="118_id" value="118"></td>
+                            <td>东莞市亚洲制药有限公司</td>
+                            <td>521</td>
+                            <td>2021-01-01</td>
+                            <td>8.0</td>
+                            <td class="p-quantity">
+                                <input type="button" class="decrease" value="-">
+                                <input name="118_num" type="text" class="quantity" value="0">
+                                <input type="button" class="increase" value="+">
+                            </td>
+                            <td><div class="p-sum">￥<span class="onlySum">0</span></div></td>
+                        </tr>
+                        
+
+                        <tr id="119">
+                            <td><img src="./images/119.jpg" style="width: 40px;"></td>
+                            <td>正露丸</td>
+                            <td><input name="119_id" value="119"></td>
+                            <td>东莞市亚洲制药有限公司</td>
+                            <td>527</td>
+                            <td>2021-01-01</td>
+                            <td>45.0</td>
+                            <td class="p-quantity">
+                                <input type="button" class="decrease" value="-">
+                                <input name="119_num" type="text" class="quantity" value="0">
+                                <input type="button" class="increase" value="+">
+                            </td>
+                            <td><div class="p-sum">￥<span class="onlySum">0</span></div></td>
+                        </tr>
+                        
+
+                        <tr id="120">
+                            <td><img src="./images/120.jpg" style="width: 40px;"></td>
+                            <td>艾司奥美拉唑镁肠溶片</td>
+                            <td><input name="120_id" value="120"></td>
+                            <td>太极集团有限公司</td>
+                            <td>521</td>
+                            <td>2021-01-01</td>
+                            <td>108.0</td>
+                            <td class="p-quantity">
+                                <input type="button" class="decrease" value="-">
+                                <input name="120_num" type="text" class="quantity" value="0">
+                                <input type="button" class="increase" value="+">
+                            </td>
+                            <td><div class="p-sum">￥<span class="onlySum">0</span></div></td>
+                        </tr>
+                        
+                    </tbody></table>s
+</body>
+</html>
