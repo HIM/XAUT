@@ -1,7 +1,13 @@
 package xaut.entity;
 
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
+
+@Component("user")
 public class User {
+    @Value("www")
     private String username;
+    @Value("123")
     private String password;
 
     public String getUsername() {
@@ -18,6 +24,9 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public User() {
     }
 
     @Override

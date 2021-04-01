@@ -33,37 +33,37 @@
     <context:annotation-config/>
     <context:component-scan base-package="xaut"/>
 
-    <aop:config>
-        <!--切面逻辑声明，插入非业务代码，对事务的管理-->
-        <aop:aspect ref="myaspect">
-            <!--去哪些连接点中去插入  expression切入点表达式-->
-            <aop:pointcut id="userServiceRelated" expression="execution(public void xaut.service.UserService.*(..))"/>
-            <!--前置通知-->
-            <aop:before method="check" pointcut-ref="userServiceRelated"/>
-            <!--环绕通知-->
-            <aop:before method="moniter" pointcut-ref="userServiceRelated"/>
-            <!--后置通知-->
-            <aop:before method="log" pointcut-ref="userServiceRelated"/>
-        </aop:aspect>
-    </aop:config>
+    <!--<aop:config>-->
+        <!--&lt;!&ndash;切面逻辑声明，插入非业务代码，对事务的管理&ndash;&gt;-->
+        <!--<aop:aspect ref="myaspect">-->
+            <!--&lt;!&ndash;去哪些连接点中去插入  expression切入点表达式&ndash;&gt;-->
+            <!--<aop:pointcut id="userServiceRelated" expression="execution(public void xaut.service.UserService.*(..))"/>-->
+            <!--&lt;!&ndash;前置通知&ndash;&gt;-->
+            <!--<aop:before method="check" pointcut-ref="userServiceRelated"/>-->
+            <!--&lt;!&ndash;环绕通知&ndash;&gt;-->
+            <!--<aop:before method="moniter" pointcut-ref="userServiceRelated"/>-->
+            <!--&lt;!&ndash;后置通知&ndash;&gt;-->
+            <!--<aop:before method="log" pointcut-ref="userServiceRelated"/>-->
+        <!--</aop:aspect>-->
+    <!--</aop:config>-->
 
-    <!--声明事务管理器  切面类  注入-->
-    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager" >
-        <!--注入属性-->
-        <property name="dataSource" ref="dataSource"></property>
-    </bean>
-    <!--advice天然的环绕通知  事务的隔离性 传播性-->
-    <tx:advice id="myTransactionAdvice" transaction->
-        <tx:attributes>
-            <tx:method name="addCouple" />
-        </tx:attributes>
-    </tx:advice>
-    <!--往哪些方法去插入织入-->
-    <aop:config>
-        <aop:pointcut id="txPoint" expression="execution(public void xaut.service.UserService.*(..))"/>
-        <!--用advisor属性进行联合-->
-        <aop:advisor advice-ref="myTransactionAdvice" pointcut-ref="txPoint"/>
-    </aop:config>
+    <!--&lt;!&ndash;声明事务管理器  切面类  注入&ndash;&gt;-->
+    <!--<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager" >-->
+        <!--&lt;!&ndash;注入属性&ndash;&gt;-->
+        <!--<property name="dataSource" ref="dataSource"></property>-->
+    <!--</bean>-->
+    <!--&lt;!&ndash;advice天然的环绕通知  事务的隔离性 传播性&ndash;&gt;-->
+    <!--<tx:advice id="myTransactionAdvice" transaction->-->
+        <!--<tx:attributes>-->
+            <!--<tx:method name="addCouple" />-->
+        <!--</tx:attributes>-->
+    <!--</tx:advice>-->
+    <!--&lt;!&ndash;往哪些方法去插入织入&ndash;&gt;-->
+    <!--<aop:config>-->
+        <!--<aop:pointcut id="txPoint" expression="execution(public void xaut.service.UserService.*(..))"/>-->
+        <!--&lt;!&ndash;用advisor属性进行联合&ndash;&gt;-->
+        <!--<aop:advisor advice-ref="myTransactionAdvice" pointcut-ref="txPoint"/>-->
+    <!--</aop:config>-->
 
 
 </beans>
